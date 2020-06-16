@@ -83,3 +83,9 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+Cart package:
+    composer require darryldecode/cart
+useful if you plan to have full control:
+    php artisan vendor:publish --provider="Darryldecode\Cart\CartServiceProvider" --tag="config"

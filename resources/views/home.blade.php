@@ -5,6 +5,7 @@
     <h2>Products</h2>
     <div class="row">
         @foreach ($products as $product)
+        <div class="col-3">
             <div class="card">
                 <img class="card-img-top" src="{{ asset('default-product.jpg') }}" alt="Card image cap">
                 <div class="card-body">
@@ -12,9 +13,10 @@
                     <p class="card-text">{{ $product->description }}</p>
                 </div>
                 <div class="card-body">
-                    <a href="#" class="card-link">Add to Cart</a> 
+                    <a href="{{ route('cart.add',$product->id) }}" class="card-link">Add to Cart</a> 
                 </div>
             </div>
+        </div>
         @endforeach
     </div>
 </div>
