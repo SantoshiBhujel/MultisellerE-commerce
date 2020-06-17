@@ -128,4 +128,10 @@ class CartController extends Controller
         $cartItem= \Cart::session(auth()->id())->getContent() ;
         return view('cart.index')->with('cartItem',$cartItem);
     }
+
+
+    public function checkout()
+    {
+         return view('cart.checkout');
+    }
 }

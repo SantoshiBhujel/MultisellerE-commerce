@@ -44,10 +44,12 @@
 
                             <a class="nav-link p-0 m-0" href="{{ route('addtoCart.index') }}">
                                 <i class="fas fa-cart-arrow-down text-success fa-2x"></i> 
-                                {{ __('Cart') }}
-                                
                                 <div class="badge badge-danger">
+                                    @auth
                                     {{  Cart::session(auth()->user()->id)->getContent()->count() }}
+                                    @else
+                                    0
+                                    @endauth
                                 </div>
                             </a>
                         </li> 

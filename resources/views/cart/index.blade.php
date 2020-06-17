@@ -46,5 +46,5 @@
         Total Price: Rs. {{ \Cart::session(auth()->user()->id)->getTotal() }}
     </h3>
 
-    <a href="" class="btn btn-primary">Proceed To Checkout</a>
+    <a href="{{ route('cart.checkout') }}" class="btn btn-primary">Proceed To Checkout</a>
 @endsection
