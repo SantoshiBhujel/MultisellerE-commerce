@@ -25,3 +25,7 @@ Route::get('/cart/checkout', 'CartController@checkout')->name('cart.checkout');
 
 
 Route::resource('orders', 'OrderController');
+
+
+Route::get('/paypal/checkout', 'PayPalController@getExpressCheckout');
+Route::get('/paypal/checkout-success', 'PayPalController@getExpressCheckoutSuccess ');

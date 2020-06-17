@@ -9,7 +9,7 @@
    
          <div class="form-group">
             <label for="">Full Name</label>
-            <input type="text" name="shipping_fullname" id="" class="form-control" value="{{ auth()->user()->name }} ">
+            <input type="text" name="shipping_fullname" id="" class="form-control" value="{{ auth()->user()->name }} " >
         </div>
    
          <div class="form-group">
@@ -36,8 +36,24 @@
             <label for="">Mobile</label>
             <input type="text" name="shipping_phone" id="" class="form-control">
         </div>
+
+        <h4>Payment Option</h4>
+
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="" id="" value="checkedValue" checked>
+                Cash on Delivery
+            </label>
+        </div>
+
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="" id="" value="Paypal">
+                Cash on Delivery
+            </label>
+        </div>
    
-         <button type="submit" class="btn btn-primary">Place Order</button> 
+        <button type="submit" class="btn btn-primary mt-3">Place Order</button> 
     
      </form>
  @endsection
