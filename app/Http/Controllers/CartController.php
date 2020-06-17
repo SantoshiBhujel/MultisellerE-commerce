@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
+
+use Validator;
 
 class CartController extends Controller
 {
@@ -24,7 +27,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        $cartItem= \Cart::session(auth()->id())->getContent() ;
+        return view('cart.index')->with('cartItem', $cartItem);
     }
 
     /**
@@ -80,7 +84,17 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        //dd($request->qty);
+        //dd($id);
+        \Cart::session(auth()->id())->update($id, [
+            'quantity' => [
+                'relative' => false,
+                'value' => $request->qty,
+            ]
+        ]);
+
+        return back();
     }
 
     /**
@@ -91,14 +105,27 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        \Cart::session(auth()->id())->remove($id);
+
+        return back();
     }
 
 
 
-    public function add(Product $productID)
+    public function add($id)
     {
-        $product=Product::find($productID)->get();
-        
+        $product= Product::find($id);
+        // dd($product);
+        \Cart::session(auth()->user()->id)->add(array(
+            'id' => $product->id,
+            'name' => $product->name,
+            'price' => $product->price,
+            'quantity' => 1,
+            'attributes' => array(),
+            'associatedModel' => $product
+        ));
+
+        $cartItem= \Cart::session(auth()->id())->getContent() ;
+        return view('cart.index')->with('cartItem',$cartItem);
     }
 }

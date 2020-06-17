@@ -20,4 +20,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('addtoCart', 'CartController');
-Route::get('/addCart/{productID}', 'CartController@add')->name('cart.add');
+Route::get('/addCart/{id}', 'CartController@add')->name('cart.add');
