@@ -86,7 +86,10 @@ class OrderController extends Controller
 
         $order->grand_total = \Cart::session(auth()->id())->getTotal();
         $order->item_count = \Cart::session(auth()->id())->getContent()->count();
-
+        if(request('payment_method')=='paypal')
+        {
+            $order->payment_method='paypal';
+        }
         $order->save();
 
         //dd($order);
@@ -110,11 +113,8 @@ class OrderController extends Controller
         //mail the user
 
 
-
-        //redirect to thankyou 
-
-        return "Thankyou for order";
-
+        //redirect with success message 
+        return redirect()->route('home')->withMessage('Order has been placed');
     }
 
     /**
