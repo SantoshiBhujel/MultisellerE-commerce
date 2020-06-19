@@ -89,3 +89,25 @@ Cart package:
     composer require darryldecode/cart
 useful if you plan to have full control:
     php artisan vendor:publish --provider="Darryldecode\Cart\CartServiceProvider" --tag="config"
+For details visit: https://packagist.org/packages/darryldecode/cart 
+                                    OR
+                    https://github.com/darryldecode/laravelshoppingcart
+
+Paypal Package:  (https://packagist.org/packages/srmklive/paypal)
+    composer require srmklive/paypal:~1.0
+publish configuration:
+    php artisan vendor:publish --provider "Srmklive\PayPal\Providers\PayPalServiceProvider"
+
+For Sandbox API,
+Create account in paypal
+Goto --> developer.paypal.com
+Log into Dashboard with paypal account
+
+Select Sandbox and Create App, it will create sandbox business account.
+
+Goto Sandbox->Account section,
+you will get the account which you created.
+Select business account and under Manage Account, Select View/Edit Account
+where you get the api username, password and secret.
+
+Configure the details in the .env file and config/app.php (for detils visit above paypal package link).
