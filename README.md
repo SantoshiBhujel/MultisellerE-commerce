@@ -115,3 +115,8 @@ Configure the details in the .env file and config/app.php (for detils visit abov
 
 Once the voyager installation is successful,
 Go to admin panel, under tool->bread, for "order" add BREAD (configure order) and create a relationship with users.
+
+If you want to create seed from the database's original data, install iseed:
+    composer require orangehill/iseed   
+
+php artisan iseed data_types, data_rows, categories, posts, pages, menus, menu_items, roles, users, user_roles, permissions, permission_role, settings  
