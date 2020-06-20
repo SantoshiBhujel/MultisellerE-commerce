@@ -111,3 +111,7 @@ Select business account and under Manage Account, Select View/Edit Account
 where you get the api username, password and secret.
 
 Configure the details in the .env file and config/app.php (for detils visit above paypal package link).
+
+
+Once the voyager installation is successful,
+Go to admin panel, under tool->bread, for "order" add BREAD (configure order) and create a relationship with users.
