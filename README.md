@@ -125,3 +125,5 @@ and run :
 While registering shop, shop activation mail goes to admin.
 Mail url redirect admin to voyager admin(shops) panel
 (Add BREAD for "shops" in voyager admin panel(same as "order") with necessary modification and create ralation with user.)
+
+Mail the shop owner once the shop is activated( event is traced with ShopObserver)
