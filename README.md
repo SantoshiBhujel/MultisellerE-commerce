@@ -118,5 +118,10 @@ Go to admin panel, under tool->bread, for "order" add BREAD (configure order) an
 
 If you want to create seed from the database's original data, install iseed:
     composer require orangehill/iseed   
+and run :
+    php artisan iseed 'NAME OF TABLES WHOSE SEED IS WANTED' ,,,  Like
+    php artisan iseed data_types, data_rows, categories, posts, pages, menus, menu_items, roles, users, user_roles, permissions, permission_role, settings 
 
-php artisan iseed data_types, data_rows, categories, posts, pages, menus, menu_items, roles, users, user_roles, permissions, permission_role, settings  
+While registering shop, shop activation mail goes to admin.
+Mail url redirect admin to voyager admin(shops) panel
+(Add BREAD for "shops" in voyager admin panel(same as "order") with necessary modification and create ralation with user.)

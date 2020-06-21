@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Order;
+use App\Shop;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -41,5 +42,11 @@ class User extends \TCG\Voyager\Models\User
     public function orders()
     {
         return $this->hasMany(Order::class, 'users_id', 'id');
+    }
+
+
+    public function shop()
+    {
+        return $this->hasOne(Shop::class,'users_id');
     }
 }

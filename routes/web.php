@@ -34,3 +34,6 @@ Route::get('/paypal/checkout-cancel', 'PayPalController@cancelPage')->name('payp
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+
+Route::resource('shops', 'ShopController');
