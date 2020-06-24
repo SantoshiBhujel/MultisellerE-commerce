@@ -11,6 +11,7 @@ class ShopSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Shop::class)->create(['users_id'=>2]);
+        factory(Shop::class)->create(['users_id'=>4]);
     }
 }

@@ -127,3 +127,16 @@ Mail url redirect admin to voyager admin(shops) panel
 (Add BREAD for "shops" in voyager admin panel(same as "order") with necessary modification and create ralation with user.)
 
 Mail the shop owner once the shop is activated( event is traced with ShopObserver)
+
+To give access to the Owner about shop in admin panel(using custom voyager controller):
+    create a new custom controller VoyagerShopController(within Admin folder) and extends VoyagerBaseController
+    From VoyagerBaseController, copy the 'index' method and paste to VoyagerShopController
+    In Voyager Admin, edit the shops(tools->bread->shops) and insert the controller name(App\Http\Controllers\Admin\VoyagerShopController),save it.
+    (line no 74-77 added in VoyagerShopController,which shows only logged in users shop details)
+
+Policy created:
+    php artisan make:policy ShopPolicy --model=Shop
+policy prevents unauthorized user to edit or view the shop information of other users.
+
+To add policy, go to Voyager Admin, edit the shops(tools->bread->shops) and insert the policy name
+(App\Policies\ShopPolicy),save it.
