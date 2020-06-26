@@ -7,7 +7,7 @@ Your shop {{ $shop->name }} is fully active
 
 The body of your message.
 
-@component('mail::button', ['url' => url('shops.show',$shop->id)])
+@component('mail::button', ['url' => url('/admin/shops')])
 Visit Your Shop
 @endcomponent 
  

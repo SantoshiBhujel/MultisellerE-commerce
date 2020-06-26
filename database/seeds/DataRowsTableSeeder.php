@@ -1,370 +1,1032 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Voyager\Models\DataRow;
-use TCG\Voyager\Models\DataType;
 
 class DataRowsTableSeeder extends Seeder
 {
+
     /**
-     * Auto generated seed file.
+     * Auto generated seed file
+     *
+     * @return void
      */
     public function run()
     {
-        $userDataType = DataType::where('slug', 'users')->firstOrFail();
-        $menuDataType = DataType::where('slug', 'menus')->firstOrFail();
-        $roleDataType = DataType::where('slug', 'roles')->firstOrFail();
+        
 
-        $dataRow = $this->dataRow($userDataType, 'id');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'number',
-                'display_name' => __('voyager::seeders.data_rows.id'),
-                'required'     => 1,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 1,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($userDataType, 'name');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.name'),
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 2,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($userDataType, 'email');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.email'),
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 3,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($userDataType, 'password');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'password',
-                'display_name' => __('voyager::seeders.data_rows.password'),
-                'required'     => 1,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'order'        => 4,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($userDataType, 'remember_token');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.remember_token'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 5,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($userDataType, 'created_at');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('voyager::seeders.data_rows.created_at'),
-                'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 6,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($userDataType, 'updated_at');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('voyager::seeders.data_rows.updated_at'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 7,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($userDataType, 'avatar');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'image',
-                'display_name' => __('voyager::seeders.data_rows.avatar'),
-                'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 8,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($userDataType, 'user_belongsto_role_relationship');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'relationship',
-                'display_name' => __('voyager::seeders.data_rows.role'),
-                'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'details'      => [
-                    'model'       => 'TCG\\Voyager\\Models\\Role',
-                    'table'       => 'roles',
-                    'type'        => 'belongsTo',
-                    'column'      => 'role_id',
-                    'key'         => 'id',
-                    'label'       => 'display_name',
-                    'pivot_table' => 'roles',
-                    'pivot'       => 0,
-                ],
-                'order'        => 10,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($userDataType, 'user_belongstomany_role_relationship');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'relationship',
+        \DB::table('data_rows')->delete();
+        
+        \DB::table('data_rows')->insert(array (
+            0 => 
+            array (
+                'add' => 0,
+                'browse' => 0,
+                'data_type_id' => 1,
+                'delete' => 0,
+                'details' => NULL,
+                'display_name' => 'ID',
+                'edit' => 0,
+                'field' => 'id',
+                'id' => 1,
+                'order' => 1,
+                'read' => 0,
+                'required' => 1,
+                'type' => 'number',
+            ),
+            1 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 1,
+                'delete' => 1,
+                'details' => NULL,
+                'display_name' => 'Name',
+                'edit' => 1,
+                'field' => 'name',
+                'id' => 2,
+                'order' => 2,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            2 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 1,
+                'delete' => 1,
+                'details' => NULL,
+                'display_name' => 'Email',
+                'edit' => 1,
+                'field' => 'email',
+                'id' => 3,
+                'order' => 3,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            3 => 
+            array (
+                'add' => 1,
+                'browse' => 0,
+                'data_type_id' => 1,
+                'delete' => 0,
+                'details' => NULL,
+                'display_name' => 'Password',
+                'edit' => 1,
+                'field' => 'password',
+                'id' => 4,
+                'order' => 4,
+                'read' => 0,
+                'required' => 1,
+                'type' => 'password',
+            ),
+            4 => 
+            array (
+                'add' => 0,
+                'browse' => 0,
+                'data_type_id' => 1,
+                'delete' => 0,
+                'details' => NULL,
+                'display_name' => 'Remember Token',
+                'edit' => 0,
+                'field' => 'remember_token',
+                'id' => 5,
+                'order' => 5,
+                'read' => 0,
+                'required' => 0,
+                'type' => 'text',
+            ),
+            5 => 
+            array (
+                'add' => 0,
+                'browse' => 1,
+                'data_type_id' => 1,
+                'delete' => 0,
+                'details' => NULL,
+                'display_name' => 'Created At',
+                'edit' => 0,
+                'field' => 'created_at',
+                'id' => 6,
+                'order' => 6,
+                'read' => 1,
+                'required' => 0,
+                'type' => 'timestamp',
+            ),
+            6 => 
+            array (
+                'add' => 0,
+                'browse' => 0,
+                'data_type_id' => 1,
+                'delete' => 0,
+                'details' => NULL,
+                'display_name' => 'Updated At',
+                'edit' => 0,
+                'field' => 'updated_at',
+                'id' => 7,
+                'order' => 7,
+                'read' => 0,
+                'required' => 0,
+                'type' => 'timestamp',
+            ),
+            7 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 1,
+                'delete' => 1,
+                'details' => NULL,
+                'display_name' => 'Avatar',
+                'edit' => 1,
+                'field' => 'avatar',
+                'id' => 8,
+                'order' => 8,
+                'read' => 1,
+                'required' => 0,
+                'type' => 'image',
+            ),
+            8 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 1,
+                'delete' => 0,
+                'details' => '{"model":"TCG\\\\Voyager\\\\Models\\\\Role","table":"roles","type":"belongsTo","column":"role_id","key":"id","label":"display_name","pivot_table":"roles","pivot":0}',
+                'display_name' => 'Role',
+                'edit' => 1,
+                'field' => 'user_belongsto_role_relationship',
+                'id' => 9,
+                'order' => 10,
+                'read' => 1,
+                'required' => 0,
+                'type' => 'relationship',
+            ),
+            9 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 1,
+                'delete' => 0,
+                'details' => '{"model":"TCG\\\\Voyager\\\\Models\\\\Role","table":"roles","type":"belongsToMany","column":"id","key":"id","label":"display_name","pivot_table":"user_roles","pivot":"1","taggable":"0"}',
                 'display_name' => 'Roles',
-                'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'details'      => [
-                    'model'       => 'TCG\\Voyager\\Models\\Role',
-                    'table'       => 'roles',
-                    'type'        => 'belongsToMany',
-                    'column'      => 'id',
-                    'key'         => 'id',
-                    'label'       => 'display_name',
-                    'pivot_table' => 'user_roles',
-                    'pivot'       => '1',
-                    'taggable'    => '0',
-                ],
-                'order'        => 11,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($userDataType, 'settings');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'hidden',
+                'edit' => 1,
+                'field' => 'user_belongstomany_role_relationship',
+                'id' => 10,
+                'order' => 11,
+                'read' => 1,
+                'required' => 0,
+                'type' => 'relationship',
+            ),
+            10 => 
+            array (
+                'add' => 0,
+                'browse' => 0,
+                'data_type_id' => 1,
+                'delete' => 0,
+                'details' => NULL,
                 'display_name' => 'Settings',
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 12,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($menuDataType, 'id');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'number',
-                'display_name' => __('voyager::seeders.data_rows.id'),
-                'required'     => 1,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 1,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($menuDataType, 'name');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.name'),
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 2,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($menuDataType, 'created_at');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('voyager::seeders.data_rows.created_at'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 3,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($menuDataType, 'updated_at');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('voyager::seeders.data_rows.updated_at'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 4,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($roleDataType, 'id');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'number',
-                'display_name' => __('voyager::seeders.data_rows.id'),
-                'required'     => 1,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 1,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($roleDataType, 'name');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.name'),
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 2,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($roleDataType, 'created_at');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('voyager::seeders.data_rows.created_at'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 3,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($roleDataType, 'updated_at');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('voyager::seeders.data_rows.updated_at'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 4,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($roleDataType, 'display_name');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.display_name'),
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 5,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($userDataType, 'role_id');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.role'),
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 9,
-            ])->save();
-        }
-    }
-
-    /**
-     * [dataRow description].
-     *
-     * @param [type] $type  [description]
-     * @param [type] $field [description]
-     *
-     * @return [type] [description]
-     */
-    protected function dataRow($type, $field)
-    {
-        return DataRow::firstOrNew([
-            'data_type_id' => $type->id,
-            'field'        => $field,
-        ]);
+                'edit' => 0,
+                'field' => 'settings',
+                'id' => 11,
+                'order' => 12,
+                'read' => 0,
+                'required' => 0,
+                'type' => 'hidden',
+            ),
+            11 => 
+            array (
+                'add' => 0,
+                'browse' => 0,
+                'data_type_id' => 2,
+                'delete' => 0,
+                'details' => NULL,
+                'display_name' => 'ID',
+                'edit' => 0,
+                'field' => 'id',
+                'id' => 12,
+                'order' => 1,
+                'read' => 0,
+                'required' => 1,
+                'type' => 'number',
+            ),
+            12 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 2,
+                'delete' => 1,
+                'details' => NULL,
+                'display_name' => 'Name',
+                'edit' => 1,
+                'field' => 'name',
+                'id' => 13,
+                'order' => 2,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            13 => 
+            array (
+                'add' => 0,
+                'browse' => 0,
+                'data_type_id' => 2,
+                'delete' => 0,
+                'details' => NULL,
+                'display_name' => 'Created At',
+                'edit' => 0,
+                'field' => 'created_at',
+                'id' => 14,
+                'order' => 3,
+                'read' => 0,
+                'required' => 0,
+                'type' => 'timestamp',
+            ),
+            14 => 
+            array (
+                'add' => 0,
+                'browse' => 0,
+                'data_type_id' => 2,
+                'delete' => 0,
+                'details' => NULL,
+                'display_name' => 'Updated At',
+                'edit' => 0,
+                'field' => 'updated_at',
+                'id' => 15,
+                'order' => 4,
+                'read' => 0,
+                'required' => 0,
+                'type' => 'timestamp',
+            ),
+            15 => 
+            array (
+                'add' => 0,
+                'browse' => 0,
+                'data_type_id' => 3,
+                'delete' => 0,
+                'details' => NULL,
+                'display_name' => 'ID',
+                'edit' => 0,
+                'field' => 'id',
+                'id' => 16,
+                'order' => 1,
+                'read' => 0,
+                'required' => 1,
+                'type' => 'number',
+            ),
+            16 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 3,
+                'delete' => 1,
+                'details' => NULL,
+                'display_name' => 'Name',
+                'edit' => 1,
+                'field' => 'name',
+                'id' => 17,
+                'order' => 2,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            17 => 
+            array (
+                'add' => 0,
+                'browse' => 0,
+                'data_type_id' => 3,
+                'delete' => 0,
+                'details' => NULL,
+                'display_name' => 'Created At',
+                'edit' => 0,
+                'field' => 'created_at',
+                'id' => 18,
+                'order' => 3,
+                'read' => 0,
+                'required' => 0,
+                'type' => 'timestamp',
+            ),
+            18 => 
+            array (
+                'add' => 0,
+                'browse' => 0,
+                'data_type_id' => 3,
+                'delete' => 0,
+                'details' => NULL,
+                'display_name' => 'Updated At',
+                'edit' => 0,
+                'field' => 'updated_at',
+                'id' => 19,
+                'order' => 4,
+                'read' => 0,
+                'required' => 0,
+                'type' => 'timestamp',
+            ),
+            19 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 3,
+                'delete' => 1,
+                'details' => NULL,
+                'display_name' => 'Display Name',
+                'edit' => 1,
+                'field' => 'display_name',
+                'id' => 20,
+                'order' => 5,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            20 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 1,
+                'delete' => 1,
+                'details' => NULL,
+                'display_name' => 'Role',
+                'edit' => 1,
+                'field' => 'role_id',
+                'id' => 21,
+                'order' => 9,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            21 => 
+            array (
+                'add' => 0,
+                'browse' => 0,
+                'data_type_id' => 4,
+                'delete' => 0,
+                'details' => '{}',
+                'display_name' => 'Id',
+                'edit' => 0,
+                'field' => 'id',
+                'id' => 22,
+                'order' => 1,
+                'read' => 0,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            22 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 4,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Name',
+                'edit' => 1,
+                'field' => 'name',
+                'id' => 23,
+                'order' => 3,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            23 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 4,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Users Id',
+                'edit' => 1,
+                'field' => 'users_id',
+                'id' => 24,
+                'order' => 2,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            24 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 4,
+                'delete' => 1,
+                'details' => '{"on":"Active","off":"Inactive","checked":true}',
+                'display_name' => 'Is Active',
+                'edit' => 1,
+                'field' => 'is_active',
+                'id' => 25,
+                'order' => 4,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'checkbox',
+            ),
+            25 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 4,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Description',
+                'edit' => 1,
+                'field' => 'description',
+                'id' => 26,
+                'order' => 5,
+                'read' => 1,
+                'required' => 0,
+                'type' => 'text_area',
+            ),
+            26 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 4,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Rating',
+                'edit' => 1,
+                'field' => 'rating',
+                'id' => 27,
+                'order' => 6,
+                'read' => 1,
+                'required' => 0,
+                'type' => 'text',
+            ),
+            27 => 
+            array (
+                'add' => 0,
+                'browse' => 1,
+                'data_type_id' => 4,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Created At',
+                'edit' => 1,
+                'field' => 'created_at',
+                'id' => 28,
+                'order' => 7,
+                'read' => 1,
+                'required' => 0,
+                'type' => 'timestamp',
+            ),
+            28 => 
+            array (
+                'add' => 0,
+                'browse' => 0,
+                'data_type_id' => 4,
+                'delete' => 0,
+                'details' => '{}',
+                'display_name' => 'Updated At',
+                'edit' => 0,
+                'field' => 'updated_at',
+                'id' => 29,
+                'order' => 8,
+                'read' => 0,
+                'required' => 0,
+                'type' => 'timestamp',
+            ),
+            29 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 4,
+                'delete' => 1,
+                'details' => '{"model":"App\\\\User","table":"users","type":"belongsTo","column":"users_id","key":"id","label":"name","pivot_table":"categories","pivot":"0","taggable":"0"}',
+                'display_name' => 'users',
+                'edit' => 1,
+                'field' => 'shop_belongsto_user_relationship',
+                'id' => 30,
+                'order' => 9,
+                'read' => 1,
+                'required' => 0,
+                'type' => 'relationship',
+            ),
+            30 => 
+            array (
+                'add' => 0,
+                'browse' => 0,
+                'data_type_id' => 5,
+                'delete' => 0,
+                'details' => '{}',
+                'display_name' => 'Id',
+                'edit' => 0,
+                'field' => 'id',
+                'id' => 31,
+                'order' => 1,
+                'read' => 0,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            31 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 5,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Order Number',
+                'edit' => 1,
+                'field' => 'order_number',
+                'id' => 32,
+                'order' => 3,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            32 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 5,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Users Id',
+                'edit' => 1,
+                'field' => 'users_id',
+                'id' => 33,
+                'order' => 2,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            33 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 5,
+                'delete' => 1,
+                'details' => '{"options":{"pending":"Pending","processing":"Processing","completed":"Completed","decline":"Decline"}}',
+                'display_name' => 'Status',
+                'edit' => 1,
+                'field' => 'status',
+                'id' => 34,
+                'order' => 4,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'select_dropdown',
+            ),
+            34 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 5,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Grand Total',
+                'edit' => 1,
+                'field' => 'grand_total',
+                'id' => 35,
+                'order' => 5,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            35 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 5,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Item Count',
+                'edit' => 1,
+                'field' => 'item_count',
+                'id' => 36,
+                'order' => 6,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            36 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 5,
+                'delete' => 1,
+                'details' => '{"on":"Paid","off":"Not Paid","checked":true}',
+                'display_name' => 'Is Paid',
+                'edit' => 1,
+                'field' => 'is_paid',
+                'id' => 37,
+                'order' => 7,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'checkbox',
+            ),
+            37 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 5,
+                'delete' => 1,
+                'details' => '{"options":{"cash_on_delivery":"Cash_on_Delivery","paypal":"Paypal","stripe":"Stripe","card":"Card"}}',
+                'display_name' => 'Payment Method',
+                'edit' => 1,
+                'field' => 'payment_method',
+                'id' => 38,
+                'order' => 8,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'select_dropdown',
+            ),
+            38 => 
+            array (
+                'add' => 1,
+                'browse' => 0,
+                'data_type_id' => 5,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Shipping Fullname',
+                'edit' => 1,
+                'field' => 'shipping_fullname',
+                'id' => 39,
+                'order' => 9,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            39 => 
+            array (
+                'add' => 1,
+                'browse' => 0,
+                'data_type_id' => 5,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Shipping Address',
+                'edit' => 1,
+                'field' => 'shipping_address',
+                'id' => 40,
+                'order' => 10,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            40 => 
+            array (
+                'add' => 1,
+                'browse' => 0,
+                'data_type_id' => 5,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Shipping City',
+                'edit' => 1,
+                'field' => 'shipping_city',
+                'id' => 41,
+                'order' => 11,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            41 => 
+            array (
+                'add' => 1,
+                'browse' => 0,
+                'data_type_id' => 5,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Shipping State',
+                'edit' => 1,
+                'field' => 'shipping_state',
+                'id' => 42,
+                'order' => 12,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            42 => 
+            array (
+                'add' => 1,
+                'browse' => 0,
+                'data_type_id' => 5,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Shipping Zipcode',
+                'edit' => 1,
+                'field' => 'shipping_zipcode',
+                'id' => 43,
+                'order' => 13,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            43 => 
+            array (
+                'add' => 1,
+                'browse' => 0,
+                'data_type_id' => 5,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Shipping Phone',
+                'edit' => 1,
+                'field' => 'shipping_phone',
+                'id' => 44,
+                'order' => 14,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            44 => 
+            array (
+                'add' => 1,
+                'browse' => 0,
+                'data_type_id' => 5,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Notes',
+                'edit' => 1,
+                'field' => 'notes',
+                'id' => 45,
+                'order' => 15,
+                'read' => 1,
+                'required' => 0,
+                'type' => 'text_area',
+            ),
+            45 => 
+            array (
+                'add' => 1,
+                'browse' => 0,
+                'data_type_id' => 5,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Billing Fullname',
+                'edit' => 1,
+                'field' => 'billing_fullname',
+                'id' => 46,
+                'order' => 16,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            46 => 
+            array (
+                'add' => 1,
+                'browse' => 0,
+                'data_type_id' => 5,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Billing Address',
+                'edit' => 1,
+                'field' => 'billing_address',
+                'id' => 47,
+                'order' => 17,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            47 => 
+            array (
+                'add' => 1,
+                'browse' => 0,
+                'data_type_id' => 5,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Billing City',
+                'edit' => 1,
+                'field' => 'billing_city',
+                'id' => 48,
+                'order' => 18,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            48 => 
+            array (
+                'add' => 1,
+                'browse' => 0,
+                'data_type_id' => 5,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Billing State',
+                'edit' => 1,
+                'field' => 'billing_state',
+                'id' => 49,
+                'order' => 19,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            49 => 
+            array (
+                'add' => 1,
+                'browse' => 0,
+                'data_type_id' => 5,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Billing Zipcode',
+                'edit' => 1,
+                'field' => 'billing_zipcode',
+                'id' => 50,
+                'order' => 20,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            50 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 5,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Billing Phone',
+                'edit' => 1,
+                'field' => 'billing_phone',
+                'id' => 51,
+                'order' => 21,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            51 => 
+            array (
+                'add' => 0,
+                'browse' => 1,
+                'data_type_id' => 5,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Created At',
+                'edit' => 1,
+                'field' => 'created_at',
+                'id' => 52,
+                'order' => 22,
+                'read' => 1,
+                'required' => 0,
+                'type' => 'timestamp',
+            ),
+            52 => 
+            array (
+                'add' => 0,
+                'browse' => 0,
+                'data_type_id' => 5,
+                'delete' => 0,
+                'details' => '{}',
+                'display_name' => 'Updated At',
+                'edit' => 0,
+                'field' => 'updated_at',
+                'id' => 53,
+                'order' => 23,
+                'read' => 0,
+                'required' => 0,
+                'type' => 'timestamp',
+            ),
+            53 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 5,
+                'delete' => 1,
+                'details' => '{"model":"App\\\\User","table":"users","type":"belongsTo","column":"users_id","key":"id","label":"name","pivot_table":"categories","pivot":"0","taggable":"0"}',
+                'display_name' => 'users',
+                'edit' => 1,
+                'field' => 'order_belongsto_user_relationship',
+                'id' => 54,
+                'order' => 24,
+                'read' => 1,
+                'required' => 0,
+                'type' => 'relationship',
+            ),
+            54 => 
+            array (
+                'add' => 0,
+                'browse' => 0,
+                'data_type_id' => 6,
+                'delete' => 0,
+                'details' => '{}',
+                'display_name' => 'Id',
+                'edit' => 0,
+                'field' => 'id',
+                'id' => 55,
+                'order' => 1,
+                'read' => 0,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            55 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 6,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Name',
+                'edit' => 1,
+                'field' => 'name',
+                'id' => 56,
+                'order' => 3,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            56 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 6,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Description',
+                'edit' => 1,
+                'field' => 'description',
+                'id' => 57,
+                'order' => 4,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'rich_text_box',
+            ),
+            57 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 6,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Price',
+                'edit' => 1,
+                'field' => 'price',
+                'id' => 58,
+                'order' => 5,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'text',
+            ),
+            58 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 6,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Cover Image',
+                'edit' => 1,
+                'field' => 'cover_image',
+                'id' => 59,
+                'order' => 6,
+                'read' => 1,
+                'required' => 0,
+                'type' => 'image',
+            ),
+            59 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 6,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Shops Id',
+                'edit' => 1,
+                'field' => 'shops_id',
+                'id' => 60,
+                'order' => 2,
+                'read' => 1,
+                'required' => 0,
+                'type' => 'text',
+            ),
+            60 => 
+            array (
+                'add' => 0,
+                'browse' => 1,
+                'data_type_id' => 6,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Created At',
+                'edit' => 1,
+                'field' => 'created_at',
+                'id' => 61,
+                'order' => 7,
+                'read' => 1,
+                'required' => 0,
+                'type' => 'timestamp',
+            ),
+            61 => 
+            array (
+                'add' => 0,
+                'browse' => 0,
+                'data_type_id' => 6,
+                'delete' => 0,
+                'details' => '{}',
+                'display_name' => 'Updated At',
+                'edit' => 0,
+                'field' => 'updated_at',
+                'id' => 62,
+                'order' => 8,
+                'read' => 0,
+                'required' => 0,
+                'type' => 'timestamp',
+            ),
+            62 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 6,
+                'delete' => 1,
+                'details' => '{}',
+                'display_name' => 'Deleted At',
+                'edit' => 1,
+                'field' => 'deleted_at',
+                'id' => 63,
+                'order' => 9,
+                'read' => 1,
+                'required' => 0,
+                'type' => 'timestamp',
+            ),
+        ));
+        
+        
     }
 }

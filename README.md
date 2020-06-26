@@ -120,7 +120,7 @@ If you want to create seed from the database's original data, install iseed:
     composer require orangehill/iseed   
 and run :
     php artisan iseed 'NAME OF TABLES WHOSE SEED IS WANTED' ,,,  Like
-    php artisan iseed data_types, data_rows, categories, posts, pages, menus, menu_items, roles, users, user_roles, permissions, permission_role, settings 
+    php artisan iseed data_types,data_rows,categories,posts,pages,menus,menu_items,roles,users,user_roles,permissions,permission_role,settings 
 
 While registering shop, shop activation mail goes to admin.
 Mail url redirect admin to voyager admin(shops) panel
@@ -129,7 +129,7 @@ Mail url redirect admin to voyager admin(shops) panel
 Mail the shop owner once the shop is activated( event is traced with ShopObserver)
 
 To give access to the Owner about shop in admin panel(using custom voyager controller):
-    create a new custom controller VoyagerShopController(within Admin folder) and extends VoyagerBaseController
+    create a new custom controller VoyagerShopController(within Admin folder) and extends 'VoyagerBaseController'
     From VoyagerBaseController, copy the 'index' method and paste to VoyagerShopController
     In Voyager Admin, edit the shops(tools->bread->shops) and insert the controller name(App\Http\Controllers\Admin\VoyagerShopController),save it.
     (line no 74-77 added in VoyagerShopController,which shows only logged in users shop details)

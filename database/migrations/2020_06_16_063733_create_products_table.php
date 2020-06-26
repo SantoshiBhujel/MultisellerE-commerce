@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('description');
             $table->float('price');
             $table->string('cover_image')->nullable();
-            $table->unsignedBigInteger('shops_id');
+            $table->unsignedBigInteger('shops_id')->nullable();
             $table->foreign('shops_id')->references('id')->on('shops')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
