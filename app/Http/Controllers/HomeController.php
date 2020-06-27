@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $product= Product::take(20)->get();
-        return view('home')->with('products',$product);
+        $product= Product::take(8)->get();
+        return view('layouts.mainview')->with('products',$product);
     }
 }
