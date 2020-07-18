@@ -14,7 +14,7 @@
                         <li>
                         <a href="{{route('products.index', ['category_id' => $category->id])}}">{{$category->name}}<i
                                     class="pe-7s-angle-right"></i></a>
-
+ 
                                     @php
                                         $children = TCG\Voyager\Models\Category::where('parent_id', $category->id)->get();
                                     @endphp
@@ -42,15 +42,10 @@
                                             @endif
                                         </div>
                                     @endforeach
-
-
                                 </div>
-
-                              @endif
+                            @endif
                         </li>
-
                     @endforeach
-
                 </ul>
             </div>
         </div>

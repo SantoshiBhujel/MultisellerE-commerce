@@ -14,7 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $category=$request->category_id;
+        
+        return \view('product.index');
     }
 
     /**

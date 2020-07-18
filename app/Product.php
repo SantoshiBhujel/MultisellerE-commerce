@@ -15,5 +15,5 @@ class Product extends Model
     {
         return $this->belongsTo(Shop::class, 'shops_id', 'id');
     }
-    
+
 }

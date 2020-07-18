@@ -37,3 +37,6 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 Route::resource('shops', 'ShopController');
+
+
+Route::resource('products', 'ProductController');

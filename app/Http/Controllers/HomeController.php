@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use TCG\Voyager\Models\Category;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,8 @@ class HomeController extends Controller
     public function index()
     {
         $product= Product::take(8)->get();
-        return view('layouts.mainview')->with('products',$product);
+        $category= Category::whereNull('parent_id')->get();
+        //dd($category);
+        return view('layouts.mainview',[' products'=>$product, 'categories'=>$category]);
     }
 }
